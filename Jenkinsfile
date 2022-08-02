@@ -5,14 +5,16 @@ node {
     }
 
     stage(name: 'Build Image'){
-        docker.build("ambawatyuvaraj/argocd")
+        docker_image = docker.build("ambawatyuvaraj/argocd")
     }
     stage(name: 'Test Image'){
         sh 'echo Test Passed'
     }
     stage(name: 'Push Image'){
         docker.withRegistry('https://registry.hub.docker.com','dockherhub'){
-            push("${env.BUILD_NUMBER}")
+            //push("${env.BUILD_NUMBER}")
+            docker_image.push("${BUILD_NUMBER}")
+            docker_image.push('latest')           
         }
     }
     stage(name: 'Trigger Update Manifest Job'){
