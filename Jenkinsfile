@@ -14,7 +14,7 @@ node {
         docker.withRegistry('https://registry.hub.docker.com','dockherhub'){
             //push("${env.BUILD_NUMBER}")
             docker_image.push("${BUILD_NUMBER}")
-            docker_image.push('latest')           
+                       
         }
     }
     stage(name: 'Trigger Update Manifest Job'){
