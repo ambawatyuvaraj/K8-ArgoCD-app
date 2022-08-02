@@ -11,7 +11,7 @@ node {
         sh 'echo Test Passed'
     }
     stage(name: 'Push Image'){
-        docker.withRegistry('https://registry.hub.docker.com','dockerhub'){
+        docker.withRegistry('https://registry.hub.docker.com','dockherhub'){
             push("${env.BUILD_NUMBER}")
         }
     }
