@@ -3,4 +3,4 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello from K8-ArgoCD-POD!'
+    return 'Hello from ARGOCD DEMO!'
