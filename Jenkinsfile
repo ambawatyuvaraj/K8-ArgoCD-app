@@ -11,8 +11,9 @@ node {
         sh 'echo Test Passed'
     }
     stage(name: 'Push Image'){
-        docker.withRegistry('https://registry.hub.docker.com','dockerhub')
+        docker.withRegistry('https://registry.hub.docker.com','dockerhub'){
             push("${env.BUILD_NUMBER}")
+        }
     }
     stage(name: 'Trigger Update Manifest Job'){
         echo "triggered updatemanifest job"
